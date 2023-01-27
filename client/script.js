@@ -115,9 +115,12 @@ async function handleSubmit(e) {
     const messageDiv = document.getElementById(`${uniqueId}`)
 
     loader(messageDiv) // run the 3 dots animation
+    const serverUrl = window.location.protocol === 'http'
+        ? 'http://localhost:5000'
+        : 'https://codex-w3d3.onrender.com'
 
     // fetch the data from the backend -> bot's response
-    const response = await postData('http://localhost:5000', {
+    const response = await postData(serverUrl, {
         body: JSON.stringify({
             prompt: data.get('prompt'),
         })
