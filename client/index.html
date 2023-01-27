@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Gpt Replica</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="chat_container"></div>
+
+      <form action="">
+        <textarea name="prompt" cols="1" rows="1" placeholder="Que voulez vous ? "></textarea>
+        <button type="button"> <img src="./assets/send.svg" alt="send icon"> </button>
+      </form>
+    </div>
+
+    <template id="stripeChat">
+      <div class="wrapper">
+        <div class="chat">
+          <div class="profile">
+            <img src="" alt="">
+          </div>
+          <div class="message"></div>
+        </div>
+      </div>
+    </template>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
