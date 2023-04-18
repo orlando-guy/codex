@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -9,7 +9,40 @@
   </head>
   <body>
     <div id="app">
-      <div id="chat_container"></div>
+      
+      <div id="chat_container">
+        <div class="helper flex-center flex-column">
+          <h1>Re : Chat GPT by Orlando</h1>
+          <div class="d-flex flex-md-column w-100">
+            <div class="prompts d-flex flex-column h-100 lh-1">
+              <h2 class="text-center mb-1 d-flex flex-column flex-center"><span class="mb-1">🚀</span> <span>Examples !</span></h2>
+              <span>"Expliquer l'ordinateur quantique en termes simples" &rarr;</span>
+              <span>"Vous avez des idées créatives pour l'anniversaire d'un enfant de 10 ans ?" &rarr;</span>
+              <span>"Comment faire une requête HTTP en Javascript ?" &rarr;</span>
+            </div>
+            <div class="advice d-flex flex-column h-100 lh-1">
+              <h2 class="text-center flex-center flex-column mb-1"><span class="mb-1">👂🏾</span> <span>Bon à savoir</span></h2>
+              <span>👌 Ceci n'est pas la plateforme officiel <a href="https://openai.com/research/gpt-4" target="_blank" class="text-primary">"GPT"</a> mais plutôt une alternative dû au fait qu'elle est inaccessible dans certains pays.</span>
+              <span>💻 Peut occasionnellement produire des instructions préjudiciable ou un contenu biaisé.</span>
+              <span>🐱‍🏍 Se souvient de ce que l'utilisateur à dit plus tôt dans la conversation.</span>
+            </div>
+            <div class="share flex-center flex-column flex-md-row flex-md-wrap text-nowrap h-100">
+              <h2 class="text-center d-md-none flex-center flex-column"><span class="mb-1">✨</span> <span>extras</span> </h2>
+              <span id="coffee" class="cursor-pointer">🍵 Achète-moi un café !</span>
+              <span><a href="https://my-portfolio-orlando-guy.vercel.app" target="_blank" class="primary-link">💻 <span class="d-md-none">Visite</span> mon portfolio &rarr;</a></span>
+              <span>
+                <a href="https://github.com/orlando-guy/codex" class="primary-link" target="_blank">
+                  <svg height="20" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="icon githubIcon v-align-middle">
+                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                  </svg>
+                  Dépot Github &rarr;
+                </a>
+              </span>
+              <!-- <span>🎦 Facebook</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
 
       <form action="">
         <textarea name="prompt" cols="1" rows="1" placeholder="Que voulez vous ? "></textarea>
@@ -27,7 +60,20 @@
         </div>
       </div>
     </template>
-
+    <template id="modalTemplate">
+      <div class="modal show fade">
+        <div class="modal-content">
+          <div class="modal-content-header">
+            <h2>Title</h2>
+            <button type="button">X</button>
+          </div>
+          <div class="modal-content-body lh-1">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestiae delectus expedita, totam asperiores quaerat quia labore earum reprehenderit sit corporis hic laboriosam, similique modi vero, quod commodi quos consectetur!</p>
+          </div>
+        </div>
+      </div>
+    </template>
     <script type="module" src="/script.js"></script>
+  
   </body>
 </html>

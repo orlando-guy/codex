@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 
+:root {
+  --xs: 0;
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+  --xxl: 1400px;
+  --azure-color: #007FFF;
+  --default-color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +20,11 @@
 
 body {
   background: #343541;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 #app {
@@ -29,6 +45,7 @@ body {
   overflow-y: scroll;
 
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 10px;
 
@@ -42,6 +59,279 @@ body {
 /* hides scrollbar */
 #chat_container::-webkit-scrollbar {
   display: none;
+}
+
+.primary-link {
+  color: var(--default-color);
+  position: relative;
+  text-decoration: none;
+}
+
+.primary-link:hover,
+.primary-link:focus,
+.primary-link:active {
+  color: var(--azure-color);
+  transition: color .3s ease-in-out;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1113;
+  background-color: rgba(10, 10, 13, .5);
+}
+
+.fade {
+  transition: height .35s ease-in-out;
+}
+
+.modal.fade:not(.show) {
+  display: none !important;
+}
+
+.modal-content {
+  z-index: 1115;
+  max-width: 100%;
+  width: 50%;
+  height: 300px;
+  border: none;
+  border-radius: .30rem;
+  background: #ffffff;
+  padding: 1rem 2rem;
+  overflow: hidden;
+}
+
+.modal-content-header {
+  display: flex;
+  margin-bottom: .7rem;
+}
+
+.modal-content-header h2 {
+  flex: 1;
+}
+
+.modal-content-header h2+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.vw-100 {
+  width: 100vw;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1 !important;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center:not(d-flex),
+.flex-start:not(d-flex) {
+  display: flex;
+}
+
+.flex-start {
+  justify-content: start;
+  align-items: start;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-white {
+  color: var(--default-color) !important;
+}
+
+.text-primary {
+  color: var(--azure-color) !important;
+}
+
+.lh-1 {
+  line-height: 1.3rem !important;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .text-sm-nowrap {
+    white-space: nowrap !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .d-md-flex {
+    display: flex !important;
+  }
+
+  .d-md-none {
+    display: none !important;
+  }
+
+  .d-md-block {
+    display: block !important;
+  }
+
+  .d-md-inline-block {
+    display: inline-block !important;
+  }
+
+  .flex-md-column {
+    flex-direction: column;
+  }
+
+  .flex-md-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-md-row {
+    flex-direction: row !important;
+  }
+
+  .flex-md-wrap {
+    flex-wrap: wrap;
+  }
+
+  .flex-md-center:not(d-md-flex),
+  .flex-md-start:not(d-md-flex) {
+    display: flex;
+  }
+
+  .flex-md-start {
+    justify-content: start;
+    align-items: start;
+  }
+
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.v-align-middle {
+  vertical-align: middle;
+}
+
+.helper {
+  gap: 3rem;
+  color: rgb(238, 231, 238);
+  width: 80%;
+  padding: 5rem 15px 15px;
+}
+
+.helper>div {
+  gap: 20px;
+}
+
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  overflow: visible !important;
+}
+
+.githubIcon {
+  color: var(--default-color);
+}
+
+.prompts,
+.advice,
+.share {
+  gap: .5rem;
+}
+
+.prompts>span,
+.advice>span,
+.share>span {
+  padding: 1rem;
+  line-height: 1.2rem;
+  background-color: #494a55;
+  transition: all .5s ease-out;
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.prompts>span {
+  cursor: pointer;
+}
+
+.prompts>span:hover {
+  color: white;
+  /* transform: scale(1.1); */
+  background-color: #101013;
+  border: none;
+}
+
+.share {
+  justify-content: start;
+}
+
+@media screen and (max-width: 992px) {
+  .helper {
+    width: 100%;
+    /* position: 50%; */
+  }
+
+  .prompts>span,
+  .advice>span,
+  .share>span {
+    min-width: auto;
+  }
 }
 
 .wrapper {
@@ -88,10 +378,8 @@ body {
 
 .message {
   flex: 1;
-
   color: #dcdcdc;
   font-size: 20px;
-
   max-width: 100%;
   overflow-x: scroll;
 
@@ -101,8 +389,7 @@ body {
    * The pre-wrap value allows the browser to wrap long lines of text onto multiple lines if necessary.
    * The default value for the white-space property in CSS is "normal". This tells the browser to collapse multiple white space characters into a single space, and to wrap text onto multiple lines as needed to fit within its container.
   */
-  white-space: pre-wrap; 
-
+  white-space: pre-wrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

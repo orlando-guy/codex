@@ -1,27 +1,42 @@
+import { Modal } from './components/Modal'
 import bot from './assets/bot.svg'
 import user from './assets/user.svg'
-import { debounce } from './utils'
+import { debounce, $ } from './utils'
 import { postData } from './utils/api'
+import { ERRORS, MESSAGES } from './utils/constant'
 
-/**
- * 
- * @param {HTMLElement} element
- * @return {HTMLElement | null}
- */
-function $(element, all = false) {
-    let data = null
-    if (all) {
-        data = document.querySelectorAll(element)
-    } else {
-        data = document.querySelector(element)
-    }
-    return data ?? null
-}
+
 
 const form = $('form')
 const chatContainer = $('#chat_container')
+const preloadHelperContent = $('.helper')
 
 let loadInterval;
+
+if (preloadHelperContent) {
+    const onclickTransferToInput = e => {
+        /** @type HTMLElement */
+        const element = e.currentTarget
+        const newValue = element?.textContent.replace(/["→]/g, '')
+        form.querySelector('textarea').value = newValue
+    }
+
+    const onBuyMeCoffe = e => {
+        new Modal(
+            'Achetez moi un café',
+            MESSAGES.coffee
+        ).renderTo($('body'))
+    }
+
+    preloadHelperContent.querySelectorAll('.prompts > span')
+        .forEach(prompt => {
+            return prompt.addEventListener('click', onclickTransferToInput)
+        })
+
+    preloadHelperContent.querySelector('#coffee')
+        .addEventListener('click', onBuyMeCoffe)
+}
+
 /**
  * 
  * @param {HTMLElement} element
@@ -106,6 +121,9 @@ async function handleSubmit(e) {
     chatContainer.append(stripeChat(false, data.get('prompt')))
     form.reset()
 
+    // Clean the chat container
+    preloadHelperContent && preloadHelperContent.remove()
+
     // generate bot's chatStripe
     const uniqueId = generateUniqueId()
     chatContainer.append(stripeChat(true, " ", uniqueId))
@@ -126,26 +144,30 @@ async function handleSubmit(e) {
         })
     })
 
-   clearInterval(loadInterval)
-   messageDiv.innerText = ''
+    clearInterval(loadInterval)
+    messageDiv.innerText = ''
 
-   if (response.ok) {
-    const data = await response.json()
-    const parsedData = data.bot.trim()
-    typeText(messageDiv, parsedData)
-   } else {
-    const error = await response.text()
+    if (response.ok) {
+        const data = await response.json()
+        const parsedData = data.bot.trim()
+        typeText(messageDiv, parsedData)
+    } else {
+        const { error } = await response.json()
 
-    messageDiv.innerText = "An error occurred while processing your request"
+        messageDiv.innerText = "An error occurred while processing your request"
+        
+        error.status && (new Modal(
+            'Financement',
+            ERRORS[429]
+        ).renderTo($('body')))
 
-    alert(error)
-   }
+        console.log(error);
+    }
 }
 
 form.addEventListener('submit', handleSubmit)
 
 form.addEventListener('keyup', debounce(e => {
-    console.log('render')
     if (e.key === 'Enter') {
         handleSubmit(e)
     }

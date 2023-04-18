@@ -1,4 +1,19 @@
 /**
+ * 
+ * @param {HTMLElement} element
+ * @return {HTMLElement | null}
+ */
+export function $(element, all = false) {
+    let data = null
+    if (all) {
+        data = document.querySelectorAll(element)
+    } else {
+        data = document.querySelector(element)
+    }
+    return data ?? null
+}
+
+/**
  *
  * @param {Function} callback 
  * @param {number} delay
